@@ -1,0 +1,32 @@
+<html>
+<head><title>TypeSafe AI · Jev</title></head>
+<body>
+<div x-data>
+  <template x-if="config">
+    <div>
+      <div class="section-title">TypeSafe AI · Jev</div>
+      <div class="section-description">Fast, typed judgments with visible probabilities. Questions are sent to TypeSafe using the official Python SDK.</div>
+      <div class="field">
+        <div class="field-label">
+          <label class="field-title" for="typesafe-api-key">API key</label>
+          <div class="field-description">Leave blank to use TYPESAFE_API_KEY from Agent Zero's secrets or environment. <a href="https://console.typesafe.ai/" target="_blank" rel="noopener noreferrer">Get a key</a>.</div>
+        </div>
+        <div class="field-control" x-data="{ showKey: false }" style="display:flex;gap:0.5rem;align-items:center;">
+          <input id="typesafe-api-key" :type="showKey ? 'text' : 'password'" x-model="config.api_key" autocomplete="off" spellcheck="false" placeholder="TYPESAFE_API_KEY fallback" style="min-width:0;flex:1;" />
+          <button type="button" @click="showKey = !showKey" :aria-label="showKey ? 'Hide API key' : 'Show API key'" :aria-pressed="showKey"><x-icon :name="showKey ? 'visibility_off' : 'visibility'"></x-icon></button>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label"><label class="field-title" for="typesafe-model">Model</label><div class="field-description">Use jev-latest, or pin a Jev version available to your account.</div></div>
+        <div class="field-control"><input id="typesafe-model" type="text" x-model="config.model" placeholder="jev-latest" /></div>
+      </div>
+      <div class="field">
+        <div class="field-label"><label class="field-title" for="typesafe-timeout">Request timeout (seconds)</label><div class="field-description">Per HTTP attempt. The SDK retries transient failures once.</div></div>
+        <div class="field-control"><input id="typesafe-timeout" type="number" min="1" max="300" x-model.number="config.timeout" /></div>
+      </div>
+      <div class="section-description">Ask Agent Zero to use <code>typesafe_query</code> for classification, routing, scoring, or verification. The official <code>typesafe-ai</code> skill is installed automatically.</div>
+    </div>
+  </template>
+</div>
+</body>
+</html>

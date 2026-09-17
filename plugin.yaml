@@ -1,0 +1,8 @@
+name: typesafe_ai
+title: TypeSafe AI · Jev
+description: Ask Jev typed questions and explore choices, yes/no probabilities, and scores directly in chat.
+version: 1.0.0
+settings_sections:
+  - external
+per_project_config: true
+per_agent_config: true
