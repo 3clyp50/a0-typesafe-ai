@@ -17,3 +17,11 @@
 .typesafe-raw { font-size: .8rem; }
 .typesafe-raw summary { cursor: pointer; }
 .typesafe-raw pre { white-space: pre-wrap; max-height: 20rem; overflow: auto; }
+.typesafe-images { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: .75rem; margin-bottom: .8rem; }
+.typesafe-image { margin: 0; min-width: 0; }
+.typesafe-image-frame { position: relative; }
+.typesafe-image-frame img { display: block; width: 100%; height: auto; border-radius: .4rem; }
+.typesafe-box { position: absolute; border: 2px solid #e551ba; box-sizing: border-box; pointer-events: none; }
+.typesafe-box-label { position: absolute; top: 0; left: 0; max-width: 100%; background: #93206e; color: white; padding: .1rem .3rem; font-size: .75rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.typesafe-box-toggle { display: flex; align-items: center; gap: .4rem; margin-bottom: .6rem; font-size: .85rem; cursor: pointer; }
+.typesafe-hide-boxes .typesafe-box { display: none; }

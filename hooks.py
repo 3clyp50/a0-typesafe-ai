@@ -1,31 +1,35 @@
-"""Install the official SDK and skill; preserve shared packages and user edits."""
+"""Install the official SDK and skill; preserve user skill edits."""
 
 import hashlib
-from importlib import metadata
 import json
 from pathlib import Path
 import subprocess
 import sys
 
 from helpers import files
+from helpers.print_style import PrintStyle
 
 
 ROOT = Path(__file__).resolve().parent
 RECORD = ROOT / ".skill-install.json"
 
 
-def install():
-    requirement = (ROOT / "requirements.txt").read_text().strip()
-    package, version = requirement.split("==")
+def ensure_dependencies(raise_on_error=True):
     try:
-        installed = metadata.version(package)
-    except metadata.PackageNotFoundError:
-        installed = None
-    if installed != version:
         subprocess.run(
-            [sys.executable, "-m", "pip", "install", "--disable-pip-version-check", requirement],
+            [sys.executable, "-m", "pip", "install", "--disable-pip-version-check", "-r", str(ROOT / "requirements.txt")],
             check=True,
         )
+        return True
+    except Exception as error:
+        if raise_on_error:
+            raise
+        PrintStyle.error(f"TypeSafe AI: dependency installation failed: {error}")
+        return False
+
+
+def install():
+    ensure_dependencies()
 
     target = Path(files.get_abs_path("usr/skills/typesafe-ai"))
     target.mkdir(parents=True, exist_ok=True)

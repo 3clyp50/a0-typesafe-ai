@@ -17,14 +17,14 @@
         </div>
       </div>
       <div class="field">
-        <div class="field-label"><label class="field-title" for="typesafe-model">Model</label><div class="field-description">Use jev-latest, or pin a Jev version available to your account.</div></div>
-        <div class="field-control"><input id="typesafe-model" type="text" x-model="config.model" placeholder="jev-latest" /></div>
+        <div class="field-label"><label class="field-title" for="typesafe-model">Model</label><div class="field-description">Jev 1.14 is the default for text, images, and boxes. Legacy aliases resolve to 1.14; explicit version pins are honored.</div></div>
+        <div class="field-control"><input id="typesafe-model" type="text" x-model="config.model" placeholder="jev-1.14.0" /></div>
       </div>
       <div class="field">
         <div class="field-label"><label class="field-title" for="typesafe-timeout">Request timeout (seconds)</label><div class="field-description">Per HTTP attempt. The SDK retries transient failures once.</div></div>
         <div class="field-control"><input id="typesafe-timeout" type="number" min="1" max="300" x-model.number="config.timeout" /></div>
       </div>
-      <div class="section-description">Ask Agent Zero to use <code>typesafe_query</code> for classification, routing, scoring, or verification. The official <code>typesafe-ai</code> skill is installed automatically.</div>
+      <div class="section-description">Ask Agent Zero to use <code>typesafe_query</code> for classification, routing, scoring, verification, or image bounding boxes. Images and Box are experimental. The official <code>typesafe-ai</code> skill is installed automatically.</div>
     </div>
   </template>
 </div>
